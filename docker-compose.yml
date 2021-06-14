@@ -8,7 +8,7 @@ services:
       MYSQL_USER: openboxes
       MYSQL_PASSWORD: openboxes
     volumes:
-      - openboxes/openboxes-mysql.cnf:/etc/mysql/conf.d/openboxes-mysql.cnf
+      - ./openboxes-mysql.cnf:/etc/mysql/conf.d/openboxes-mysql.cnf
     ports:
       - "3306:3306"
     networks:
@@ -23,10 +23,10 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - openboxes/openboxes-config.properties:/root/.grails/openboxes-config.properties
-      - openboxes/openboxes-setenv.sh:/usr/share/tomcat7/bin/setenv.sh
-      - openboxes/openboxes-run.sh:/root/openboxes-run.sh
-      - openboxes:/app
+      - ./openboxes-config.properties:/root/.grails/openboxes-config.properties
+      - ./openboxes-setenv.sh:/usr/share/tomcat7/bin/setenv.sh
+      - ./openboxes-run.sh:/root/openboxes-run.sh
+      - ../openboxes:/app
     depends_on:
       - db
     networks:
